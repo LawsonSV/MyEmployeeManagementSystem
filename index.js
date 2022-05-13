@@ -109,38 +109,11 @@ function addRole() {
         message: "Enter role's department ID."
     }
     ]).then(response => {
-        db.query('INSERT INTO roles (' + 'title, ' + 'salary, ' + 'department_id) VALUES (?) ', response.roleTitle, response.roleSalary, response.roleDepartmentID, function (err, response) {
+        const sql = 'INSERT INTO roles (title, salary, department_id) VALUES (?)';
+    const values = [response.roleTitle, response.roleSalary, response.roleDepartmentID]
+        db.query(sql, [values], function (err, response) {
             if (err) throw err;
             console.table(response)
         })
-        // db.query('INSERT INTO roles (salary) VALUES(?);', roleSalary, function (err, response) {
-        //     if (err) throw err;
-        //     console.table(response)
-        // })
-        // db.query('INSERT INTO roles (department_id) VALUES(?);', roleDepartmentID, function (err, response) {
-        //     if (err) throw err;
-        //     console.table(response)
-        // })
     });
-    // inquirer.prompt([{
-    //     type: 'input',
-    //     name: 'roleSalary',
-    //     message: 'Enter Role salary.',
-    //   }]).then(({roleSalary}) =>{
-    //     db.query('INSERT INTO roles (salary) VALUES(?);', roleSalary, function(err,response){
-    //       if(err) throw err;
-    //       console.table(response)
-    //     })
-    //   })
-    //   inquirer.prompt([{
-    //     type: 'input',
-    //     name: 'roleDepartmentID',
-    //     message: "Enter Role's department id.",
-    //   }]).then(({roleTitle}) =>{
-    //     db.query('INSERT INTO roles (department_id) VALUES(?);', roleDepartmentID, function(err,response){
-    //       if(err) throw err;
-    //       console.table(response)
-    //       selectPrompt()
-    //     })
-    //   })
 }
