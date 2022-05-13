@@ -110,10 +110,43 @@ function addRole() {
     }
     ]).then(response => {
         const sql = 'INSERT INTO roles (title, salary, department_id) VALUES (?)';
-    const values = [response.roleTitle, response.roleSalary, response.roleDepartmentID]
+        const values = [response.roleTitle, response.roleSalary, response.roleDepartmentID]
         db.query(sql, [values], function (err, response) {
             if (err) throw err;
-            console.table(response)
+            console.table(response);
+            selectPrompt()
+        })
+    });
+}
+
+function addEmployee() {
+    inquirer.prompt([{
+        type: 'input',
+        name: 'firstName',
+        message: "Enter employee's first name."
+    },
+    {
+        type: 'input',
+        name: 'lastName',
+        message: "Enter employee's last name."
+    },
+    {
+        type: 'input',
+        name: 'roleID',
+        message: "Enter employee's role ID."
+    },
+    {
+        type: 'input',
+        name: 'managerID',
+        message: "Enter the employee's manager ID."
+    }
+    ]).then(response => {
+        const sql = 'INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?)';
+        const values = [response.firstName, response.lastName, response.roleID, response.managerID]
+        db.query(sql, [values], function (err, response) {
+            if (err) throw err;
+            console.table(response);
+            selectPrompt()
         })
     });
 }
