@@ -52,17 +52,26 @@ function selectPrompt() {
 }
 
 function viewDepartment() {
-    db.query('SELECT * FROM department;',function(err,response){
-        
+    db.query('SELECT * FROM departments;',
+    function(err,response){
       if(err) throw err;
       console.table(response)
       selectPrompt()
     })
   }
 
-  function viewDepartment() {
-    db.query('SELECT * FROM department;',function(err,response){
-        
+  function viewRole() {
+    db.query('SELECT * FROM roles;', 
+    function(err,response){
+      if(err) throw err;
+      console.table(response)
+      selectPrompt()
+    })
+  }
+
+  function viewEmployees() {
+    db.query('SELECT * FROM employees;', 
+    function(err,response){
       if(err) throw err;
       console.table(response)
       selectPrompt()

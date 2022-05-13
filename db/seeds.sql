@@ -1,6 +1,6 @@
 USE employee_db
 
-INSERT INTO department (department_name)
+INSERT INTO departments (department_name)
 VALUES
     ("Sales/Finance"),
     ("Human Resources"),
@@ -12,7 +12,7 @@ VALUES
 ('HR Manager', 90000, 2),mys
 ('Front End Developer', 5000, 3);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES
 ('Bruce', 'Randolph', 1, NULL),
 ('Kelcie', 'Smithers', 2, NULL),
